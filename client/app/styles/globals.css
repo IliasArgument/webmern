@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --color-purple: #7143B3;
+  --color-dark: #000000;
+  --color-dark-alternate: #131619;
+  --color-light: #FFFFFF;
+  --color-dark-gray: #404040;
+  --color-light-gray: #C4C4C4;
+
+  --border-radius: 30px;
+  --border: 1px solid var(--color-light);
+
+  /* --font-family-base: 'Heebo', sans-serif;
+  --font-family-accent: 'Yantramanav', sans-serif; */
+
+  --input-height: 49px;
+
+  --container-width: 1300px;
+  --container-padding-x: 15px;
+
+  --transition-duration: 0.2s;
+
+  --header-height: 90px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  height: 100vh;
+  color: rgb(var(--foreground-rgb));
+}
+
+header {
+  background-color: rgba(255, 255, 255, 0.5); /* Transparent background with 50% opacity */
+  filter: grayscale(0.3); /* Optional filter for a subtle grayscale effect */
+  transition: background-color 0.3s ease; /* S
+}
+
+.clip {
+  white-space: nowrap; /* Запрещаем перенос строк */
+  overflow: hidden; /* Обрезаем все, что не помещается в область */
+  /* padding: 5px; Поля вокруг текста */
+  text-overflow: ellipsis; /* Добавляем многоточие */
+ }
+
+ input {
+  /* Reset all default input styles */
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none; /* Remove the default outline */
+  color: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  margin: 0;
+  padding: 0;
+  text-align: inherit;
+  width: auto;
+ }
+ a {
+  width: inherit;
+ }
+
+ .card-shadow {
+  box-shadow: -2px 3px 15px -1px rgba(0,0,0,0.47);
+  -webkit-box-shadow: -2px 3px 15px -1px rgba(0,0,0,0.47);
+  -moz-box-shadow: -2px 3px 15px -1px rgba(0,0,0,0.47);
+ }
+
+ svg *[fill] { fill: currentColor }
+svg *[stroke] { stroke: currentColor }
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+svg * {
+  transition-property: fill, stroke;
+}
+
+a {
+  color: var(--color-light);
+}
+
+a:hover {
+  color: var(--color-light-gray);
+}
+
+p {
+  margin-block: 0; /* обнуляем вертикалные отступы */
+}
+
+p:not([class]):not(:last-child) { /* отсуствие селектора клас */
+  margin-bottom: 24px;
+}
+
+.container {
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.container-wide {
+  max-width: 1920px;
+  margin-inline: auto;
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  white-space: nowrap !important;
+  clip-path: inset(100%) !important;
+  clip: rect(0 0 0 0) !important;
+  overflow: hidden !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--color-light);
+}
+
+.title-medium {
+  font-size: clamp(20px, 2.08vw, 40px);
+  line-height: 1.3;
+}
+
+.title-big {
+  font-size: clamp(24px, 3.12vw, 60px);
+}
+
+.input-base {
+  height: var(--input-height);
+}
+
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.purple-link {
+  background: var(--color-purple);
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 10px;
+}
