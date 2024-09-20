@@ -4,15 +4,10 @@ import { FieldValues, UseFormRegister } from "react-hook-form";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 
-type FieldName =
-  | "name"
-  | "major"
-  | "age"
-  | "password"
-  | "email"
-  | "repeat-password";
 
-interface IField<T extends IUserAuth> {
+type FieldName = keyof IUserAuth;
+
+interface IField<T extends FieldValues> {
   label?: string;
   type?: string;
   id?: string; // FieldName
@@ -24,7 +19,7 @@ interface IField<T extends IUserAuth> {
   [key: string]: any;
 }
 
-const InputRequired: FC<IField<IUserAuth>> = ({
+const InputRequired: FC<IField<any>> = ({ // !!!! TS problem with any
   label,
   name,
   id,
@@ -44,18 +39,16 @@ const InputRequired: FC<IField<IUserAuth>> = ({
     <label htmlFor={id} aria-label={label} className="relative block">
       {label}
       <input
-        {...register(name as keyof IUserAuth, {
+        {...register(name, {
           required: true,
           ...validation,
         })}
         {...props}
         type={showPassword && type === "password" ? "text" : type}
         className={`input-base flex w-full px-3 text-teal-900 border-solid border-2 rounded-md mb-2 ${
-          errors[`${name}` as keyof IUserAuth]
-            ? "border-y-rose-600"
-            : "border-sky-500"
+          errors[`${name}`] ? "border-y-rose-600" : "border-sky-500"
         }`}
-        aria-invalid={errors[`${name}` as keyof IUserAuth] ? "true" : "false"}
+        aria-invalid={errors[`${name}`] ? "true" : "false"}
       />
 
       {type === "password" && (

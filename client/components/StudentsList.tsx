@@ -1,12 +1,10 @@
 "use client";
 import { IStudent } from "../types/Students";
 import { getAllStudents } from "../services/students.service";
-import Link from "next/link";
 import { useQuery } from "react-query";
 import StudentCard from "./StudentCard";
 import SearchField from "./ui/forms/SearchField";
 import { useSearchParams } from "next/navigation";
-import { useSession } from "next-auth/react";
 
 export default function Students({ data }: { data?: IStudent[] }) {
   const searchParams = useSearchParams();

@@ -1,8 +1,8 @@
 "use client";
-import React, { FC, useRef, useState } from "react";
-import "./style.css";
+import React, { FC, useRef } from "react";
 import { Button } from "@nextui-org/react";
 import { IoClose } from "react-icons/io5";
+import "./style.css";
 
 interface IPopup {
   children: React.ReactNode;

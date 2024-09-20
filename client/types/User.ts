@@ -7,6 +7,8 @@ export interface IUserAuth {
   email: string;
   password: string;
   name?: string;
+  major?: string;
+  age?: string;
 }
 export interface IUser {
   email: string;

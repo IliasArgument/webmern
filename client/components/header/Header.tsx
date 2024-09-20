@@ -7,7 +7,7 @@ import { IUser } from "@/types/User";
 import { getParsedUserCookie } from "@/utils";
 
 const Header = () => {
-  const user: IUser| null  = getParsedUserCookie("currentUser");
+  const user: IUser | null = getParsedUserCookie("currentUser");
 
   return (
     <header className="w-full fixed left-0 top-0 z-20 sm:p-5 p-2">

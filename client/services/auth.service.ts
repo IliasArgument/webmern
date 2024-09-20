@@ -1,6 +1,5 @@
 
 import { AxiosResponse } from "axios";
-// import { cookies } from "next/headers";
 import { AuthResponse, IResetPassword, IUser, IUserAuth } from "@/types/User";
 import $api from "@/http";
 import Cookies from "js-cookie";
@@ -51,13 +50,10 @@ export const Logout = async () => {
   try {
     const response = await $api.post(`/auth/logout`);
 
-    // cookies().delete("accessToken");
-    // cookies().delete("refreshToken");
-    // cookies().delete("currentUser");
     Cookies.remove("accessToken");
     Cookies.remove("refreshToken");
     Cookies.remove("currentUser");
-    console.log(response.data, "response.data");
+
     return response.data;
   } catch (error: any) {
     throw error;
@@ -70,7 +66,6 @@ export const checkAuth = async (): Promise<AuthResponse> => {
     const response = await $api.get<AuthResponse>(`/auth/refresh`, {
       withCredentials: true,
     });
-    // cookies().set("accessToken", `${response?.data?.accessToken}`);
     Cookies.set("accessToken", `${response?.data?.accessToken}`);
     return response.data;
   } catch (error) {

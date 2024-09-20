@@ -1,5 +1,4 @@
 "use server";
-import axios from "axios";
 import { IStudent, IStudentData } from "../types/Students";
 import { redirect } from "next/navigation";
 import $api from "@/http";
